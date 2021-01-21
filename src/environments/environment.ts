@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  fakeBaseUrlHttps: 'app/shared/fake-jsons/',
+  baseUrlHttps: 'https://jsonplaceholder.typicode.com/', // gateway api endpoint
 };
 
 /*

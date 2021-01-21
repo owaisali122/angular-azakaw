@@ -1,0 +1,86 @@
+<div class="login-main content">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-md-6 ">
+                <div class="row ">
+                    <div class="col-md-12">
+                        <div class="form-block">
+                            <div class="mb-4 text-center">
+                                <h3>Sign In</h3>
+
+                            </div>
+                            <form [formGroup]="loginForm" (submit)="logIn()" novalidate>
+                                <div class="form-group">
+                                    <label for="userName">User name</label>
+                                    <input type="text" aria-label="User name" class="form-control" id="userName"
+                                        formControlName="userName" placeholder="owais"
+                                        [ngClass]="{ 'is-invalid': submitted && f.userName.errors }">
+
+                                    <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+
+                                        <div *ngIf="f.userName.errors.required">
+                                            Required
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="password">Password</label>
+                                    <input type="password" aria-label="Password" placeholder="12345678"
+                                        class="form-control" id="password" formControlName="password"
+                                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+
+                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+
+                                        <div *ngIf="f.password.errors.required">
+                                            Required
+                                        </div>
+
+                                        <div
+                                            *ngIf="!f.password.errors.required && !f.password.errors.pattern && f.password.errors.minlength">
+                                            Minimum Length 4
+                                        </div>
+                                        <div
+                                            *ngIf="!f.password.errors.required && !f.password.errors.pattern && f.password.errors.maxlength">
+                                            Maximum Length 8
+                                        </div>
+                                        <div *ngIf="!f.password.errors.required && f.password.errors.pattern">
+                                            Numbers Allow
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="d-flex mb-3">
+                                    <div class="">
+                                        <label class="form-check-label" for="rememberMe">Remember</label>
+                                        <input type="checkbox" class="ml-2" id="rememberMe">
+                                    </div>
+                                    <span class="ml-auto">
+                                        <a href="#" class="forgot-pass">Forgot Password</a>
+                                    </span>
+                                </div>
+
+                                <div *ngIf="isError">
+                                    <div class="alert alert-danger danger-alert-box coe-text" role="alert">
+                                        {{ message }}
+                                    </div>
+                                </div>
+
+
+                                <div class="">
+                                    <button type="submit" class="btn btn-pill text-white btn-block btn-primary">
+                                        Submit
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
